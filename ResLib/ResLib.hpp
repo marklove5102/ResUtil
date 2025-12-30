@@ -52,14 +52,14 @@ namespace ResLib
         InvalidResourceException(std::string const& msg) : ResLibException(msg) {}
     };
 
-    static void Write(std::vector<unsigned char> const& data, const char* fileName, const char* resType, const char* resId/*, int langId*/);
-    static std::vector<unsigned char> Read(const char* fileName, const char* resType, const char* resId/*, int langId*/);
-    static void Copy(const char* fromFile, const char* resType, const char* fromIdStr/*, int fromLangId*/, const char* toFile, const char* toIdStr/*, int toLangId*/);
-    static std::vector<std::string> Enum(const char* fileName, const char* resType);
-    static std::vector<std::string> EnumerateTypes(const char* fileName);
-    static std::vector<int> EnumerateLanguages(const char* fileName, const char* resType);
+    void Write(std::vector<unsigned char> const& data, const char* fileName, const char* resType, const char* resId/*, int langId*/);
+    std::vector<unsigned char> Read(const char* fileName, const char* resType, const char* resId/*, int langId*/);
+    void Copy(const char* fromFile, const char* resType, const char* fromIdStr/*, int fromLangId*/, const char* toFile, const char* toIdStr/*, int toLangId*/);
+    std::vector<std::string> Enum(const char* fileName, const char* resType);
+    std::vector<std::string> EnumerateTypes(const char* fileName);
+    std::vector<int> EnumerateLanguages(const char* fileName, const char* resType);
 
-    static std::string GetError()
+    std::string GetError()
     {
         const auto code = ::GetLastError();
         const auto err = std::error_code(code, std::system_category());
@@ -67,7 +67,7 @@ namespace ResLib
         return msg.empty() ? "code = " + std::to_string(err.value()) + ")\n" : msg;
     }
 
-    static constexpr inline WORD MakeLangId(int p, int s)
+    constexpr inline WORD MakeLangId(int p, int s)
     {
         return gsl::narrow_cast<WORD>(s) << 10 | gsl::narrow_cast<WORD>(p);
     }
@@ -227,7 +227,7 @@ std::vector<std::string> ResLib::Enum(const char* fileName, const char* resType)
         auto data = reinterpret_cast<std::vector<std::string>*>(lParam);
         if (IS_INTRESOURCE(lpszName))
         {
-            data->emplace_back(std::to_string(reinterpret_cast<int>(lpszName)));
+            data->emplace_back(std::to_string(reinterpret_cast<ULONG_PTR>(lpszName)));
         }
         else
         {
