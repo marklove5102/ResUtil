@@ -16,7 +16,7 @@ public:
 	{
 		auto pos = std::find_if(std::cbegin(_args), std::cend(_args), [&](StrType const& arg)
 		{
-			return std::equal(std::cbegin(tag), std::cend(tag), std::cbegin(arg));
+			return arg.starts_with(tag);
 		});
 
 		if (pos == std::cend(_args)) return StrType();
