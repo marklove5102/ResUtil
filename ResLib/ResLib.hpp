@@ -10,7 +10,7 @@
 #include "Handle.hpp"
 #include "DataLibHandle.h"
 #include "ResTypes.h"
-#include "..\Utf8.hpp"
+#include "Utf8.hpp"
 
 #include <Windows.h>
 #include <WinUser.h>

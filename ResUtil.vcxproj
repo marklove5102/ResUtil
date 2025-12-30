@@ -167,10 +167,10 @@
     <ClInclude Include="ResLib\Handle.hpp" />
     <ClInclude Include="ResLib\ResLib.hpp" />
     <ClInclude Include="ResLib\ResTypes.h" />
+    <ClInclude Include="ResLib\Utf8.hpp" />
     <ClInclude Include="ResUtil.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StringHelper.h" />
-    <ClInclude Include="Utf8.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
