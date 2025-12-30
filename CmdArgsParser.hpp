@@ -1,3 +1,11 @@
+/*
+ * This file is part of ResUtil.
+ * http://github.com/fmuecke/resutil
+ *
+ * Copyright (c) 2016-2025 Florian Muecke.
+ * All rights reserved.
+ */
+
 #pragma once
 
 #include "Utf8.hpp"
